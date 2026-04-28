@@ -5,22 +5,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marceana Public Demos</title>
   <style>
-    body { font-family: Inter, system-ui, sans-serif; background:#0b1020; color:#eef2ff; margin:0; padding:40px 20px; }
-    .wrap { max-width:900px; margin:0 auto; }
-    .card { background:#121933; border:1px solid #2b3560; border-radius:16px; padding:24px; }
-    a { color:#7cb2ff; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .muted { color:#aab3d1; }
+    :root {
+      --bg: #0a1020;
+      --bg2: #101934;
+      --panel: rgba(17, 24, 50, 0.88);
+      --line: #2b3560;
+      --text: #eef2ff;
+      --muted: #a8b3d4;
+      --accent: #7cb2ff;
+      --accent2: #97f0c3;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124,178,255,.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(151,240,195,.12), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 44px 24px 72px; }
+    .hero {
+      padding: 34px 0 26px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(124,178,255,0.12);
+      color: #cfe2ff;
+      border: 1px solid rgba(124,178,255,0.24);
+      margin-bottom: 16px;
+      letter-spacing: .02em;
+    }
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      line-height: 1.05;
+      max-width: 760px;
+    }
+    .lead {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .section-title {
+      margin: 28px 0 14px;
+      font-size: 22px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+    .card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #dbe6ff;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .14s ease, opacity .14s ease, background .14s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: #081225;
+      background: linear-gradient(135deg, var(--accent), #a2c7ff);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer {
+      margin-top: 38px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 18px;
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 28px 18px 56px; }
+      h1 { font-size: 32px; }
+      .lead { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
-      <h1>Marceana Public Demos</h1>
-      <p class="muted">Публичные демо и опубликованные артефакты.</p>
-      <ul>
-        <li><a href="./ideas-comparison/">Сравнительный анализ AI-идей</a></li>
-      </ul>
+    <section class="hero">
+      <div class="eyebrow">Marceana • Public Demos</div>
+      <h1>Публичные демо и аналитические артефакты</h1>
+      <p class="lead">Здесь лежат аккуратно опубликованные материалы, которые можно открывать по прямой ссылке: сравнительные анализы, витрины, демонстрационные HTML-страницы и другие безопасные public-facing артефакты.</p>
+    </section>
+
+    <h2 class="section-title">Доступные демо</h2>
+    <div class="grid">
+      <article class="card">
+        <h2>Сравнительный анализ AI-идей</h2>
+        <p>Dashboard-style HTML-анализ всех сохранённых AI-направлений: сравнение по скорости теста, скорости до денег, fit под Ивана, сложности входа и рискам.</p>
+        <div class="chips">
+          <span class="chip">HTML</span>
+          <span class="chip">Strategy</span>
+          <span class="chip">AI ideas</span>
+          <span class="chip">Dashboard style</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="./ideas-comparison/">Открыть демо</a>
+          <a class="btn btn-secondary" href="https://github.com/marceana-lda/public-demos/tree/main/ideas-comparison">Исходники</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="footer">
+      Public layer отделён от приватной базы знаний. Здесь публикуются только безопасные демонстрационные артефакты.
     </div>
   </div>
 </body>
