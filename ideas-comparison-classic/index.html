@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сравнительный анализ AI-идей Ивана</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #0f1630;
+      --text: #eef2ff;
+      --muted: #aab3d1;
+      --line: #2b3560;
+      --accent: #6ea8fe;
+      --good: #31c48d;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --chip: #1a2447;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: linear-gradient(180deg, #0a0f1f 0%, #111936 100%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 32px 24px 64px; }
+    h1, h2, h3 { margin: 0 0 12px; }
+    h1 { font-size: 34px; }
+    h2 { font-size: 24px; margin-top: 32px; }
+    p.lead { color: var(--muted); max-width: 980px; font-size: 17px; }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 24px 0 28px;
+    }
+    .meta-card, .card {
+      background: rgba(18, 25, 51, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+    }
+    .meta-card small, .muted { color: var(--muted); }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+    }
+    .table-wrap { overflow: auto; border-radius: 16px; border: 1px solid var(--line); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1060px;
+      background: rgba(18, 25, 51, 0.92);
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #162046;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      font-size: 13px;
+      color: #dbe7ff;
+    }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .chip {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: var(--text);
+      margin: 2px 6px 2px 0;
+      white-space: nowrap;
+    }
+    .score {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .bar-cell {
+      min-width: 140px;
+    }
+    .bar {
+      height: 10px;
+      width: 100%;
+      background: #1b2548;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #29365f;
+      margin-top: 6px;
+    }
+    .fill { height: 100%; border-radius: 999px; }
+    .good { background: linear-gradient(90deg, #1fbf75, #65e6af); }
+    .warn { background: linear-gradient(90deg, #d88a0a, #f7bf4f); }
+    .bad { background: linear-gradient(90deg, #d63f3f, #f87171); }
+    .rank-list { display: grid; gap: 12px; }
+    .rank-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+    }
+    .rank-num {
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border-radius: 12px; background: #1a2752; font-weight: 800; color: #cfe0ff;
+    }
+    .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    ul { margin: 10px 0 0 18px; padding: 0; }
+    .footer { margin-top: 34px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 980px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Сравнительный анализ сохранённых AI-идей</h1>
+    <p class="lead">HTML-выжимка по всем идеям, уже занесённым в базу знаний. Я сделал не абстрактный brainstorm, а сравнительный слой по скорости теста, скорости до денег, fit под Ивана, сложности входа и риску commodity / platform dependency. Визуальный подход выдержан в духе dashboard/reporting layer, который ты ранее зафиксировал как референс через Apache Superset.</p>
+
+    <div class="meta">
+      <div class="meta-card"><small>Всего идей</small><div><strong>9</strong></div></div>
+      <div class="meta-card"><small>Мой главный приоритет</small><div><strong>Meeting AI как сервис</strong></div></div>
+      <div class="meta-card"><small>Самая быстрая проверка</small><div><strong>Meeting AI / AI outbound landing</strong></div></div>
+      <div class="meta-card"><small>Самый длинный разгон</small><div><strong>Clay outreach / GEO-SEO</strong></div></div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="card">
+        <h2>Короткий вывод</h2>
+        <ul>
+          <li><strong>Лучшая идея под тебя сейчас</strong> — Meeting AI как готовый сервис. Уже есть база, короткий путь к пилотам, сильный русскоязычный угол.</li>
+          <li><strong>Вторая группа сильных идей</strong> — AI workflow setup, AI reporting/dashboard, AI-SDR / Clay-like GTM service. Это ближе к твоему реальному профилю интегратора и продавца внедрений.</li>
+          <li><strong>Быстрые, но более рискованные</strong> — AI outbound + landing и GEO/AI visibility SEO. Можно быстро тестировать, но выше риск commodity-позиционирования.</li>
+          <li><strong>Левериджные, но менее твои</strong> — языковой арбитраж и faceless media. Интересно, но хуже бьётся с твоими сильными сторонами и предсказуемостью денег.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Как читать таблицу</h2>
+        <ul>
+          <li><strong>Speed to test</strong> — насколько быстро можно показать рынок / пилот.</li>
+          <li><strong>Speed to money</strong> — насколько быстро реалистично дойти до первых денег.</li>
+          <li><strong>Fit for Ivan</strong> — насколько идея совпадает с твоим опытом, контекстом и шансом не слиться в чужую игру.</li>
+          <li><strong>Entry complexity</strong> — насколько много новой компетенции надо добрать до нормальной продажи.</li>
+          <li><strong>Risk</strong> — platform risk, commodity risk, длинный цикл или непредсказуемость монетизации.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Сводная таблица</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Идея</th>
+            <th>Что продаём</th>
+            <th>Кому</th>
+            <th>Speed to test</th>
+            <th>Speed to money</th>
+            <th>Fit for Ivan</th>
+            <th>Entry complexity</th>
+            <th>Risk</th>
+            <th>Комментарий</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Meeting AI как сервис</strong><br><span class="chip">Top pick</span></td>
+            <td>Транскрипция, диаризация, summary, action items, searchable memory</td>
+            <td>Русскоязычные SMB / mid-market команды с 10+ встречами в неделю</td>
+            <td class="bar-cell"><span class="score">9/10</span><div class="bar"><div class="fill good" style="width:90%"></div></div></td>
+            <td class="bar-cell"><span class="score">9/10</span><div class="bar"><div class="fill good" style="width:90%"></div></div></td>
+            <td class="bar-cell"><span class="score">10/10</span><div class="bar"><div class="fill good" style="width:100%"></div></div></td>
+            <td class="bar-cell"><span class="score">4/10</span><div class="bar"><div class="fill warn" style="width:40%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td>Самый короткий путь к деньгам, потому что продуктовая основа уже есть.</td>
+          </tr>
+          <tr>
+            <td><strong>AI workflow setup</strong><br><span class="chip">Strong fit</span></td>
+            <td>AI-first рабочие контуры для профессий и команд</td>
+            <td>Страхование, бухгалтерия, юристы, консалтинг, HR</td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">9/10</span><div class="bar"><div class="fill good" style="width:90%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td>Очень хороший продуктовый сервисный слой под твой интеграторский профиль.</td>
+          </tr>
+          <tr>
+            <td><strong>AI reporting / dashboard</strong></td>
+            <td>Управленческий reporting layer, dashboard, summary, insights</td>
+            <td>SMB, агентства, дистрибьюторы, команды с хаотичной отчётностью</td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill good" style="width:70%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">9/10</span><div class="bar"><div class="fill good" style="width:90%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td>Сильная B2B-идея, если продавать decision support, а не красивые графики.</td>
+          </tr>
+          <tr>
+            <td><strong>AI-SDR / гиперперсонализированный outbound</strong></td>
+            <td>Meetings booked через персонализированный outreach и видео</td>
+            <td>B2B-компании с дорогими продажами</td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill good" style="width:70%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td>Хорошо монетизируется, если жёстко продавать встречи, а не “AI”.</td>
+          </tr>
+          <tr>
+            <td><strong>Outreach-машина на Clay</strong></td>
+            <td>Clay/GTM pipeline, enrichment, personalized email, retainer support</td>
+            <td>B2B с GTM-командой и зрелым outbound</td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill bad" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill bad" style="width:70%"></div></div></td>
+            <td>Деньги там есть, но это не быстрый тест, а инвестиция в новую компетенцию.</td>
+          </tr>
+          <tr>
+            <td><strong>AI outbound + landing</strong></td>
+            <td>Landing + lead capture + follow-up для boring local B2B</td>
+            <td>Юристы, бухгалтеры, брокеры, консультанты, локальные сервисы</td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill good" style="width:70%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill good" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">4/10</span><div class="bar"><div class="fill warn" style="width:40%"></div></div></td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill bad" style="width:70%"></div></div></td>
+            <td>Быстро тестируется, но есть сильный риск скатиться в “делаем сайты”.</td>
+          </tr>
+          <tr>
+            <td><strong>AI SEO / GEO для ниши</strong></td>
+            <td>SEO/GEO visibility, статьи, GBP, AI discovery visibility</td>
+            <td>Локальные профсервисы, например юристы и стоматологии</td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill bad" style="width:80%"></div></div></td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill bad" style="width:70%"></div></div></td>
+            <td>Платят реально, но уже нужно учить новую специализацию: не просто SEO, а GEO/AI visibility.</td>
+          </tr>
+          <tr>
+            <td><strong>Языковой арбитраж</strong></td>
+            <td>Локализация видео-контента, клоны каналов на новых языках</td>
+            <td>YouTube-авторы 100k–500k без локализованных каналов</td>
+            <td class="bar-cell"><span class="score">7/10</span><div class="bar"><div class="fill good" style="width:70%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">8/10</span><div class="bar"><div class="fill bad" style="width:80%"></div></div></td>
+            <td>Сильный leverage, но хуже бьётся с твоим профилем и зависит от платформ/прав на контент.</td>
+          </tr>
+          <tr>
+            <td><strong>Faceless media channels</strong></td>
+            <td>Сеть AI-generated short-form каналов и цифровые товары</td>
+            <td>TikTok/Reels/Facebook short-form аудитория</td>
+            <td class="bar-cell"><span class="score">6/10</span><div class="bar"><div class="fill warn" style="width:60%"></div></div></td>
+            <td class="bar-cell"><span class="score">4/10</span><div class="bar"><div class="fill bad" style="width:40%"></div></div></td>
+            <td class="bar-cell"><span class="score">4/10</span><div class="bar"><div class="fill bad" style="width:40%"></div></div></td>
+            <td class="bar-cell"><span class="score">5/10</span><div class="bar"><div class="fill warn" style="width:50%"></div></div></td>
+            <td class="bar-cell"><span class="score">9/10</span><div class="bar"><div class="fill bad" style="width:90%"></div></div></td>
+            <td>Может выстрелить, но доход самый непредсказуемый и сильно завязан на алгоритмы платформ.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Мой приоритетный рейтинг</h2>
+    <div class="axis-grid">
+      <div class="card">
+        <h3>Топ по шансу на быстрые деньги</h3>
+        <div class="rank-list">
+          <div class="rank-item"><div class="rank-num">1</div><div><strong>Meeting AI как сервис</strong><br><span class="muted">Уже есть база, сильный pain, быстрый пилот, ясный B2B оффер.</span></div></div>
+          <div class="rank-item"><div class="rank-num">2</div><div><strong>AI workflow setup</strong><br><span class="muted">Очень в твоём профиле, легко продавать через конкретную пользу.</span></div></div>
+          <div class="rank-item"><div class="rank-num">3</div><div><strong>AI reporting / dashboard service</strong><br><span class="muted">Сильный wedge, если продавать управленческую пользу, не BI ради BI.</span></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Топ по fit под тебя</h3>
+        <div class="rank-list">
+          <div class="rank-item"><div class="rank-num">1</div><div><strong>Meeting AI как сервис</strong><br><span class="muted">Продукт уже partially built, strong Russian angle.</span></div></div>
+          <div class="rank-item"><div class="rank-num">2</div><div><strong>AI workflow setup</strong><br><span class="muted">Интеграция, automation, packaging, продажа внедрений, всё твоё.</span></div></div>
+          <div class="rank-item"><div class="rank-num">3</div><div><strong>AI reporting / dashboard</strong><br><span class="muted">Системное мышление + управленческий слой + data chaos cleanup.</span></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Идеи с самым длинным разгоном</h3>
+        <div class="rank-list">
+          <div class="rank-item"><div class="rank-num">1</div><div><strong>Faceless media channels</strong><br><span class="muted">Высокая зависимость от платформ, низкая предсказуемость.</span></div></div>
+          <div class="rank-item"><div class="rank-num">2</div><div><strong>Outreach на Clay</strong><br><span class="muted">Нужна новая компетенция, credits, onboarding, не мгновенный тест.</span></div></div>
+          <div class="rank-item"><div class="rank-num">3</div><div><strong>AI SEO / GEO</strong><br><span class="muted">Платят, но это уже новая специализация, а не быстрый боковой ход.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Что бы я делал сейчас</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Основной трек:</strong> Meeting AI как первый продаваемый сервис.</li>
+        <li><strong>Второй трек:</strong> держать рядом AI workflow setup как более широкую service-модель, в которую потом можно встроить meeting AI.</li>
+        <li><strong>Третий трек:</strong> AI reporting / dashboard service как соседний B2B wedge для разговоров с компаниями, которым data chaos болит сильнее, чем meeting chaos.</li>
+        <li><strong>Не тащить сейчас в ядро:</strong> faceless channels, языковой арбитраж, широкую GEO/Clay-компетенцию с нуля.</li>
+      </ul>
+    </div>
+
+    <div class="footer">Собрано на основе сохранённых notes из knowledge vault. Визуальная подача сделана в dashboard-style духе, совместимом по идее с Apache Superset как референсом визуализации, но сам файл — статический HTML для быстрого открытия по ссылке.</div>
+  </div>
+</body>
+</html>
