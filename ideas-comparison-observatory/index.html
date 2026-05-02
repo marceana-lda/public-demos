@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Ideas Observatory — Frontend Ultimate</title>
+<style>
+:root{--bg:#050713;--panel:rgba(12,18,35,.74);--panel2:rgba(255,255,255,.065);--line:rgba(180,195,255,.16);--text:#F8FAFC;--muted:#A7B0C4;--blue:#38BDF8;--violet:#A78BFA;--orange:#FB923C;--green:#4ADE80;--red:#FB7185;--shadow:0 34px 120px rgba(0,0,0,.52)}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% 5%,rgba(56,189,248,.25),transparent 30%),radial-gradient(circle at 85% 8%,rgba(167,139,250,.28),transparent 31%),radial-gradient(circle at 58% 92%,rgba(251,146,60,.18),transparent 34%),linear-gradient(160deg,#050713 0%,#08101f 45%,#0e1326 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh} body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.027) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 72%);pointer-events:none}
+.wrap{max-width:1480px;margin:auto;padding:30px 24px 72px;position:relative} .top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px} .brand{display:flex;gap:12px;align-items:center;font-weight:900;letter-spacing:-.04em} .logo{width:42px;height:42px;border-radius:15px;background:conic-gradient(from 230deg,var(--orange),var(--violet),var(--blue),var(--orange));display:grid;place-items:center;box-shadow:0 18px 52px rgba(99,102,241,.36)} .nav{display:flex;gap:10px;flex-wrap:wrap} a{color:inherit} .chiplink{text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.055);border-radius:999px;padding:9px 13px;color:#DDE6F7;font-size:13px;backdrop-filter:blur(16px)}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) 430px;gap:18px;margin-bottom:18px} .glass{border:1px solid var(--line);background:linear-gradient(180deg,rgba(15,23,42,.76),rgba(15,23,42,.48));border-radius:32px;box-shadow:var(--shadow);backdrop-filter:blur(24px)} .hero-card{padding:42px;overflow:hidden;position:relative} .hero-card:after{content:"";position:absolute;right:-130px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.28),rgba(167,139,250,.14),transparent 66%)} .eyebrow{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);color:#BAE6FD;text-transform:uppercase;font-size:12px;letter-spacing:.14em;font-weight:800} h1{font-size:clamp(46px,7vw,92px);line-height:.88;letter-spacing:-.08em;margin:22px 0 18px;max-width:950px} .gradient{background:linear-gradient(115deg,#fff 5%,#7DD3FC 34%,#C4B5FD 62%,#FDBA74 92%);-webkit-background-clip:text;background-clip:text;color:transparent} .lead{max-width:760px;color:#CBD5E1;font-size:19px;line-height:1.6;margin:0} .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px} .btn{border:1px solid var(--line);border-radius:17px;padding:13px 17px;text-decoration:none;font-weight:900} .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet) 58%,var(--orange));color:#05101d;border:0}
+.command{padding:24px;display:grid;gap:14px} .now{display:grid;grid-template-columns:1fr 1fr;gap:12px} .kpi{padding:18px;border:1px solid var(--line);background:var(--panel2);border-radius:24px} .kpi strong{display:block;font-size:36px;letter-spacing:-.07em} .kpi span,.muted{color:var(--muted)} .signal{padding:18px;border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:24px} .signal h2{margin:0 0 8px;font-size:22px} .signal p{margin:0;color:#CBD5E1;line-height:1.45}
+.layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px;margin-bottom:18px} .panel{padding:24px;border:1px solid var(--line);background:rgba(10,16,31,.68);border-radius:32px;box-shadow:0 24px 90px rgba(0,0,0,.32);backdrop-filter:blur(22px)} h2{font-size:28px;letter-spacing:-.055em;margin:0 0 16px} .opportunity{display:grid;grid-template-columns:58px 1fr;gap:15px;padding:16px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.074),rgba(255,255,255,.035));border-radius:24px;margin-top:12px} .orb{width:48px;height:48px;border-radius:18px;background:linear-gradient(135deg,rgba(56,189,248,.25),rgba(167,139,250,.2));display:grid;place-items:center;font-weight:900;color:#E0F2FE} h3{margin:0 0 6px;font-size:18px} .opportunity p{margin:0;color:#BEC8DA} .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px} .tags span{border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:12px;color:#E5E7EB;background:rgba(255,255,255,.05)} .radar{display:grid;gap:11px} .radar-row{display:grid;grid-template-columns:190px 1fr 48px;gap:10px;align-items:center;font-size:13px;color:#D8E0EF} .radar-row i{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;position:relative} .radar-row i:after{content:"";display:block;width:var(--w);height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--violet),var(--orange))} .radar-row b{font-variant-numeric:tabular-nums;color:#fff}
+.table-panel{padding:0;overflow:hidden} .table-title{padding:24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;align-items:end} .table-title p{margin:5px 0 0;color:var(--muted)} .table-wrap{overflow:auto} table{width:100%;min-width:1240px;border-collapse:collapse} th,td{padding:15px 14px;border-bottom:1px solid rgba(180,195,255,.12);text-align:left;vertical-align:top} th{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:#92A0B7;background:rgba(255,255,255,.035)} td{font-size:14px;color:#DDE5F3} tr:hover td{background:rgba(255,255,255,.035)} td strong{display:block;color:#fff;margin-bottom:5px} td small{display:block;color:var(--muted);line-height:1.35} .metric{display:inline-grid;place-items:center;min-width:48px;height:32px;border-radius:12px;font-weight:900} .blue{background:rgba(56,189,248,.14);color:#7DD3FC} .orange{background:rgba(251,146,60,.14);color:#FDBA74} .green{background:rgba(74,222,128,.13);color:#86EFAC} .red{background:rgba(251,113,133,.13);color:#FDA4AF} .metric.muted{background:rgba(148,163,184,.13);color:#CBD5E1} .priority-bar{display:flex;align-items:center;gap:9px;min-width:130px} .priority-bar i{height:10px;flex:1;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--violet),var(--orange))} .priority-bar b{font-variant-numeric:tabular-nums} .footer{color:var(--muted);font-size:13px;margin-top:18px;line-height:1.5} @media(max-width:1050px){.hero,.layout{grid-template-columns:1fr}} @media(max-width:680px){.wrap{padding:22px 14px 52px}.hero-card{padding:28px}.top{align-items:flex-start;flex-direction:column}.now{grid-template-columns:1fr}.radar-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap"><header class="top"><div class="brand"><div class="logo">✦</div><div>AI Ideas Observatory<br><span class="muted">Frontend Design Ultimate</span></div></div><nav class="nav"><a class="chiplink" href="../">Все демо</a><a class="chiplink" href="../ideas-comparison-classic/">Classic Apache</a><a class="chiplink" href="../ideas-comparison-ultimate/">Ultimate v1</a></nav></header>
+<section class="hero"><div class="glass hero-card"><span class="eyebrow">separate GitHub Pages version</span><h1>Из Apache-таблицы — в <span class="gradient">стратегическую обсерваторию</span></h1><p class="lead">Вторая новая версия для того же дашборда: визуально сильнее, с понятным executive summary, shortlist направлений и полной матрицей решений. Старые страницы остаются нетронутыми.</p><div class="actions"><a class="btn primary" href="#matrix">Открыть матрицу</a><a class="btn" href="../ideas-comparison-classic/">Сравнить с classic</a></div></div><aside class="glass command"><div class="now"><div class="kpi"><strong>4</strong><span>идеи в верхнем слое</span></div><div class="kpi"><strong>12</strong><span>направлений из classic-матрицы</span></div></div><div class="signal"><h2>Главная логика</h2><p>Сначала проверять направления, где одновременно высокий fit, короткий speed-to-money и понятная B2B-боль. Не продавать “AI”, продавать outcome.</p></div></aside></section>
+<section class="layout"><div class="panel"><h2>Opportunity shortlist</h2><article class="opportunity">
+<div class="orb">#1</div>
+<div><h3>Meeting AI как сервисTop pick</h3><p>Транскрипция, диаризация, summary, action items, searchable memory</p><div class="tags"><span>test 9/10</span><span>money 9/10</span><span>fit 10/10</span></div></div>
+</article>
+<article class="opportunity">
+<div class="orb">#2</div>
+<div><h3>AI workflow setupStrong fit</h3><p>AI-first рабочие контуры для профессий и команд</p><div class="tags"><span>test 8/10</span><span>money 8/10</span><span>fit 9/10</span></div></div>
+</article>
+<article class="opportunity">
+<div class="orb">#3</div>
+<div><h3>AI reporting / dashboard</h3><p>Управленческий reporting layer, dashboard, summary, insights</p><div class="tags"><span>test 7/10</span><span>money 8/10</span><span>fit 9/10</span></div></div>
+</article>
+<article class="opportunity">
+<div class="orb">#4</div>
+<div><h3>AI outbound + landing</h3><p>Landing + lead capture + follow-up для boring local B2B</p><div class="tags"><span>test 8/10</span><span>money 7/10</span><span>fit 8/10</span></div></div>
+</article></div><div class="panel"><h2>Priority radar</h2><div class="radar"><div class="radar-row"><span>Meeting AI как сервисTop pick</span><i style="--w:100%"></i><b>28.1</b></div>
+<div class="radar-row"><span>AI workflow setupStrong fit</span><i style="--w:86%"></i><b>24.2</b></div>
+<div class="radar-row"><span>AI reporting / dashboard</span><i style="--w:80%"></i><b>22.6</b></div>
+<div class="radar-row"><span>AI outbound + landing</span><i style="--w:75%"></i><b>21.1</b></div>
+<div class="radar-row"><span>AI-SDR / гиперперсонализированный outbound</span><i style="--w:74%"></i><b>21.0</b></div>
+<div class="radar-row"><span>Outreach-машина на Clay</span><i style="--w:53%"></i><b>15.1</b></div>
+<div class="radar-row"><span>AI SEO / GEO для ниши</span><i style="--w:48%"></i><b>13.7</b></div></div></div></section>
+<section class="panel table-panel" id="matrix"><div class="table-title"><div><h2>Decision matrix</h2><p>Метрики пересчитаны в priority signal: money + fit важнее декоративной “красоты идеи”; complexity и risk снижают приоритет.</p></div><a class="chiplink" href="../ideas-comparison-classic/">Источник: classic</a></div><div class="table-wrap"><table><thead><tr><th>Идея / offer</th><th>Кому</th><th>Test</th><th>Money</th><th>Fit</th><th>Complexity</th><th>Risk</th><th>Priority</th><th>Комментарий</th></tr></thead><tbody><tr>
+<td><strong>Meeting AI как сервисTop pick</strong><small>Транскрипция, диаризация, summary, action items, searchable memory</small></td>
+<td>Русскоязычные SMB / mid-market команды с 10+ встречами в неделю</td>
+<td><span class="metric blue">9/10</span></td>
+<td><span class="metric orange">9/10</span></td>
+<td><span class="metric green">10/10</span></td>
+<td><span class="metric muted">4/10</span></td>
+<td><span class="metric red">5/10</span></td>
+<td><div class="priority-bar"><i style="width:100%"></i><b>28.1</b></div></td>
+<td>Самый короткий путь к деньгам, потому что продуктовая основа уже есть.</td>
+</tr>
+<tr>
+<td><strong>AI workflow setupStrong fit</strong><small>AI-first рабочие контуры для профессий и команд</small></td>
+<td>Страхование, бухгалтерия, юристы, консалтинг, HR</td>
+<td><span class="metric blue">8/10</span></td>
+<td><span class="metric orange">8/10</span></td>
+<td><span class="metric green">9/10</span></td>
+<td><span class="metric muted">5/10</span></td>
+<td><span class="metric red">5/10</span></td>
+<td><div class="priority-bar"><i style="width:86%"></i><b>24.2</b></div></td>
+<td>Очень хороший продуктовый сервисный слой под твой интеграторский профиль.</td>
+</tr>
+<tr>
+<td><strong>AI reporting / dashboard</strong><small>Управленческий reporting layer, dashboard, summary, insights</small></td>
+<td>SMB, агентства, дистрибьюторы, команды с хаотичной отчётностью</td>
+<td><span class="metric blue">7/10</span></td>
+<td><span class="metric orange">8/10</span></td>
+<td><span class="metric green">9/10</span></td>
+<td><span class="metric muted">5/10</span></td>
+<td><span class="metric red">6/10</span></td>
+<td><div class="priority-bar"><i style="width:80%"></i><b>22.6</b></div></td>
+<td>Сильная B2B-идея, если продавать decision support, а не красивые графики.</td>
+</tr>
+<tr>
+<td><strong>AI outbound + landing</strong><small>Landing + lead capture + follow-up для boring local B2B</small></td>
+<td>Юристы, бухгалтеры, брокеры, консультанты, локальные сервисы</td>
+<td><span class="metric blue">8/10</span></td>
+<td><span class="metric orange">7/10</span></td>
+<td><span class="metric green">8/10</span></td>
+<td><span class="metric muted">4/10</span></td>
+<td><span class="metric red">7/10</span></td>
+<td><div class="priority-bar"><i style="width:75%"></i><b>21.1</b></div></td>
+<td>Быстро тестируется, но есть сильный риск скатиться в “делаем сайты”.</td>
+</tr>
+<tr>
+<td><strong>AI-SDR / гиперперсонализированный outbound</strong><small>Meetings booked через персонализированный outreach и видео</small></td>
+<td>B2B-компании с дорогими продажами</td>
+<td><span class="metric blue">7/10</span></td>
+<td><span class="metric orange">8/10</span></td>
+<td><span class="metric green">8/10</span></td>
+<td><span class="metric muted">6/10</span></td>
+<td><span class="metric red">6/10</span></td>
+<td><div class="priority-bar"><i style="width:74%"></i><b>21.0</b></div></td>
+<td>Хорошо монетизируется, если жёстко продавать встречи, а не “AI”.</td>
+</tr>
+<tr>
+<td><strong>Outreach-машина на Clay</strong><small>Clay/GTM pipeline, enrichment, personalized email, retainer support</small></td>
+<td>B2B с GTM-командой и зрелым outbound</td>
+<td><span class="metric blue">5/10</span></td>
+<td><span class="metric orange">6/10</span></td>
+<td><span class="metric green">8/10</span></td>
+<td><span class="metric muted">8/10</span></td>
+<td><span class="metric red">7/10</span></td>
+<td><div class="priority-bar"><i style="width:53%"></i><b>15.1</b></div></td>
+<td>Деньги там есть, но это не быстрый тест, а инвестиция в новую компетенцию.</td>
+</tr>
+<tr>
+<td><strong>AI SEO / GEO для ниши</strong><small>SEO/GEO visibility, статьи, GBP, AI discovery visibility</small></td>
+<td>Локальные профсервисы, например юристы и стоматологии</td>
+<td><span class="metric blue">6/10</span></td>
+<td><span class="metric orange">6/10</span></td>
+<td><span class="metric green">6/10</span></td>
+<td><span class="metric muted">8/10</span></td>
+<td><span class="metric red">7/10</span></td>
+<td><div class="priority-bar"><i style="width:48%"></i><b>13.7</b></div></td>
+<td>Платят реально, но уже нужно учить новую специализацию: не просто SEO, а GEO/AI visibility.</td>
+</tr>
+<tr>
+<td><strong>Языковой арбитраж</strong><small>Локализация видео-контента, клоны каналов на новых языках</small></td>
+<td>YouTube-авторы 100k–500k без локализованных каналов</td>
+<td><span class="metric blue">7/10</span></td>
+<td><span class="metric orange">5/10</span></td>
+<td><span class="metric green">5/10</span></td>
+<td><span class="metric muted">6/10</span></td>
+<td><span class="metric red">8/10</span></td>
+<td><div class="priority-bar"><i style="width:44%"></i><b>12.6</b></div></td>
+<td>Сильный leverage, но хуже бьётся с твоим профилем и зависит от платформ/прав на контент.</td>
+</tr>
+<tr>
+<td><strong>Faceless media channels</strong><small>Сеть AI-generated short-form каналов и цифровые товары</small></td>
+<td>TikTok/Reels/Facebook short-form аудитория</td>
+<td><span class="metric blue">6/10</span></td>
+<td><span class="metric orange">4/10</span></td>
+<td><span class="metric green">4/10</span></td>
+<td><span class="metric muted">5/10</span></td>
+<td><span class="metric red">9/10</span></td>
+<td><div class="priority-bar"><i style="width:32%"></i><b>9.0</b></div></td>
+<td>Может выстрелить, но доход самый непредсказуемый и сильно завязан на алгоритмы платформ.</td>
+</tr></tbody></table></div></section><p class="footer">Опубликовано как отдельная версия через установленный skill `frontend-design-ultimate`. Никакие существующие страницы не удалялись и не перезаписывались.</p></main></body></html>
